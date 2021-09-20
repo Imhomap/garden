@@ -16,7 +16,30 @@
 
 package com.google.samples.apps.sunflower.Tests
 
+import androidx.test.ext.junit.rules.ActivityScenarioRule
+import com.google.samples.apps.sunflower.GardenActivity
+import com.google.samples.apps.sunflower.Screens.First
 import com.kaspersky.kaspresso.testcases.api.testcase.TestCase
+import io.github.kakaocup.kakao.screen.Screen
+import io.github.kakaocup.kakao.text.KButton
+import org.junit.Rule
+import org.junit.Test
 
-class Test: TestCase {
+class Test: TestCase() {
+
+    @get:Rule
+    val activityScenarioRule = ActivityScenarioRule(GardenActivity::class.java)
+
+    @Test
+    fun clickAddButton() = run {
+        step("Click on add button") {
+            First {
+                addPlant{
+                    click()
+                }
+            }
+        }
+    }
+
+
 }
